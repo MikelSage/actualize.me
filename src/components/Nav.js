@@ -28,15 +28,6 @@ export default class Nav extends Component {
         >
           Projects
         </Menu.Item>
-        <Menu.Menu position='right'>
-          <Menu.Item as={NavLink} activeClassName='active' to='/login'
-            name='login'
-            active={activeItem === 'login'}
-            onClick={this.handleNavClick}
-          >
-            Login
-          </Menu.Item>
-        </Menu.Menu>
       </Menu>
     )
   }

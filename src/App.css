@@ -27,6 +27,10 @@
   to { transform: rotate(360deg); }
 }
 
+form.ui.form {
+  margin: 0px 5%;
+}
+
 .active-route {
   font-weight: bold;
 }

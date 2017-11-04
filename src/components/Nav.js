@@ -28,6 +28,13 @@ export default class Nav extends Component {
         >
           Projects
         </Menu.Item>
+        <Menu.Menu position='right'>
+          <Menu.Item
+          name='logout'
+          onClick={this.props.logoutHandler}
+          >
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
     )
   }

@@ -31,6 +31,10 @@ form.ui.form {
   margin: 0px 5%;
 }
 
+.container {
+  margin: 2%;
+}
+
 .active-route {
   font-weight: bold;
 }

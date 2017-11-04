@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom'
 import './App.css';
 import Home from './components/Home'
@@ -12,10 +11,7 @@ import LoginForm from './components/LoginForm'
 import axios from 'axios'
 
 class App extends Component {
-  state = {
-    username: '',
-    password: ''
-  }
+  state = {}
 
   handleChange = (event) => {
     this.setState({
@@ -31,34 +27,44 @@ class App extends Component {
     .then((response) => {
       localStorage.setItem('user_id', response.data.id)
       localStorage.setItem('role', response.data.role)
+      this.setState({
+        username: this.state.username,
+        password: this.state.password
+      })
     })
     .catch((error) => {
-      console.log('we hit an error');
-      console.error(error);
+      this.setState({
+        error: 'Incorrect Credentials'
+      })
+    })
+  }
+
+  logoutHandler = () => {
+    localStorage.removeItem('user_id')
+    localStorage.removeItem('role')
+    console.log('hi');
+    this.setState({
+      error: ''
     })
   }
 
   render() {
-      return localStorage.getItem('user_id') ?
-      (<Router>
-        <div className='container'>
-          <Nav />
-          <Route exact path='/' component={Home}/>
-          <Route path='/projects' component={Projects}/>
-        </div>
-      </Router>) : (
-        <Router>
-          <div className='container'>
-          <Nav />
-          <Route exact path='/' render={props => <LoginForm handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit} {...props} />}
-           />
-          <Route path='/projects' render={() => (
-            <Redirect to='/' />
-          )}/>
+      if (localStorage.getItem('user_id')) {
+        return (<Router>
+          <div>
+            <Nav logoutHandler={this.logoutHandler}/>
+            <Route exact path='/' component={Home}/>
+            <Route path='/projects' component={Projects}/>
           </div>
-        </Router>
-      )
+        </Router>)
+      } else {
+        return (<div className='container'>
+            <LoginForm handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            error={this.state.error}
+             />
+          </div>)
+      }
   }
 }
 

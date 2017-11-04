@@ -58,13 +58,15 @@ class App extends Component {
           </div>
         </Router>)
       } else {
-        return (<div className='container'>
+        return (
+          <div className='container'>
             <LoginForm handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             error={this.state.error}
              />
-          </div>)
-      }
+          </div>
+      )
+    }
   }
 }
 

@@ -26,7 +26,12 @@ export default class Projects extends Component {
           key: project.id
         },
         content: {
-          content: (<p>Some Stuff</p>),
+          content: (
+            <div>
+              <p>{project.description}</p>
+              <a href={project.spec_url} target="_blank">Link to Spec</a>
+            </div>
+          ),
           key: project.id
         }
       }

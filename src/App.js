@@ -11,6 +11,8 @@ import LoginForm from './components/LoginForm'
 import axios from 'axios'
 import BASE_URL from './requests'
 
+console.log(process.env.NODE_ENV);
+
 class App extends Component {
   state = {}
 

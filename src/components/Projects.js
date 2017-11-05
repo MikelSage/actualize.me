@@ -5,19 +5,7 @@ import BASE_URL from '../requests'
 
 
 export default class Projects extends Component {
-  state = {
-    activeIndex: -1
-  }
-
-  handleClick = (element, titleProps) => {
-    const { index } = titleProps
-    const { activeIndex } = this.state
-    const newIndex = activeIndex === index ? -1 : index
-
-    this.setState({
-      activeIndex: newIndex
-    })
-  }
+  state = {}
 
   componentDidMount() {
     axios.get(BASE_URL + '/api/v1/current_projects')
@@ -31,29 +19,19 @@ export default class Projects extends Component {
 
   render() {
     const rawProjs = this.state.projects
-    const { activeIndex } = this.state
     const projects = rawProjs && rawProjs.map((project, index) => {
-      return (
-        <div>
-          <Accordion.Title
-            active={activeIndex === index}
-            index={index}
-            onClick={this.handleClick}
-          >
-            <Icon name='dropdown'/>
-            {project.name}
-          </Accordion.Title>
-          <Accordion.Content active={activeIndex === index}>
-            <p>Some Stuff</p>
-          </Accordion.Content>
-        </div>
-      )
+      return {
+        title: {
+          content: project.name,
+          key: project.id
+        },
+        content: {
+          content: (<p>Some Stuff</p>),
+          key: project.id
+        }
+      }
     })
 
-    return(
-      <Accordion fluid styled>
-        {projects}
-      </Accordion>
-    )
+    return <Accordion fluid styled defaultActiveIndex={-1} panels={projects}/>
   }
 }

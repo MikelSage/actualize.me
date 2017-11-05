@@ -9,6 +9,7 @@ import Nav from './components/Nav'
 import Projects from './components/Projects'
 import LoginForm from './components/LoginForm'
 import axios from 'axios'
+import BASE_URL from './requests'
 
 class App extends Component {
   state = {}
@@ -20,7 +21,7 @@ class App extends Component {
   }
 
   handleSubmit = (event) => {
-    axios.post('http://localhost:5000/api/v1/sessions', {
+    axios.post(`${BASE_URL}/api/v1/sessions`, {
       username: this.state.username,
       password: this.state.password
     })

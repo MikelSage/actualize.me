@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
 import axios from 'axios'
+import BASE_URL from '../requests'
+
 
 export default class Projects extends Component {
   state = {}
   componentDidMount() {
-    axios.get('http://localhost:5000/api/v1/current_projects')
+    axios.get(BASE_URL + '/api/v1/current_projects')
       .then((response) => {
         this.setState({projects: response})
       })

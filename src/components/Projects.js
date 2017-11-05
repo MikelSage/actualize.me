@@ -23,7 +23,7 @@ export default class Projects extends Component {
       return {
         title: {
           content: project.name,
-          key: project.id
+          key: `title-${project.id}`
         },
         content: {
           content: (
@@ -32,7 +32,7 @@ export default class Projects extends Component {
               <a href={project.spec_url} target="_blank">Link to Spec</a>
             </div>
           ),
-          key: project.id
+          key: `content-${project.id}`
         }
       }
     })

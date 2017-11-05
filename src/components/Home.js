@@ -7,7 +7,7 @@ export default class Home extends Component {
       <div>
         <Header as='h1' textAlign='center'>
           <Header.Content>
-            Welcome to essentially nothing
+            Welcome to Some Stuff
           </Header.Content>
         </Header>
       </div>

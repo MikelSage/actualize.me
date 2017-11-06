@@ -12,9 +12,6 @@ import ProjectPage from './components/ProjectPage'
 import axios from 'axios'
 import BASE_URL from './requests'
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.thing);
-
 class App extends Component {
   state = {}
 

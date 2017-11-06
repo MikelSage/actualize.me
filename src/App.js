@@ -44,7 +44,6 @@ class App extends Component {
   logoutHandler = () => {
     localStorage.removeItem('user_id')
     localStorage.removeItem('role')
-    console.log('hi');
     this.setState({
       error: ''
     })
@@ -57,7 +56,7 @@ class App extends Component {
             <Nav logoutHandler={this.logoutHandler}/>
             <Route exact path='/' component={Home}/>
             <Route exact path='/projects' component={Projects}/>
-            <Route path='/projects/:id/submissions' component={ProjectPage}/>
+            <Route path='/projects/:id/ungraded' component={ProjectPage}/>
           </div>
         </Router>)
       } else {

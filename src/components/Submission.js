@@ -5,18 +5,38 @@ import axios from 'axios'
 import BASE_URL from '../requests'
 
 export default class Submission extends Component {
-  state = {}
+  state = {
+    scores: []
+  }
 
   handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
+    let newScore = { [event.target.name]: event.target.value }
+    this.setState({
+      scores: this.state.scores.concat(newScore)
+    })
   }
 
   handleSubmit = (event) => {
-    alert(`scores for project ${this.props.proj_id} from user ${this.props.user_id}: ${this.state[1]}`)
+    Promise.all([this.mapScorePosts()])
+    .then(() => {
+      this.props.fetchSubs()
+    })
+  }
+
+  mapScorePosts = () => {
+    return this.state.scores.map((score) => {
+      let area = Object.keys(score)[0]
+      return axios.post(`${BASE_URL}/api/v1/scores`, {
+        sub_id: this.props.submission.id,
+        area_id: area,
+        score: score[area]
+      })
+    })
   }
 
   componentDidMount() {
-    let project_id = this.props.proj_id
+    console.log(this.props);
+    let project_id = this.props.submission.project_id
     axios.get(`${BASE_URL}/api/v1/projects/${project_id}/areas`)
     .then((response) => {
       this.setState({areas: response.data})
@@ -30,8 +50,9 @@ export default class Submission extends Component {
     const rawAreas = this.state.areas
     const areas = rawAreas && rawAreas.map((area) => {
       return <Area
-               key={`${this.props.user_id}-${area.id}`}
+               key={`${this.props.submission.user_id}-${area.id}`}
                rawArea={area}
+               user={this.props.submission.user_id}
                handleChange={this.handleChange}
               />
     })
@@ -39,6 +60,7 @@ export default class Submission extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         {areas}
+        <br/>
         <input type='submit' value='Submit' />
       </Form>
     )

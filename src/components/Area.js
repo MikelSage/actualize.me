@@ -7,11 +7,12 @@ export default class Area extends Component {
     const rawArea = this.props.rawArea
     const scoreButtons = _.times(4, (index) => {
       return <Form.Field
-              label='This one'
+              label={index + 1}
               control='input'
               type='radio'
               value={index + 1}
-              name={`${rawArea.id}`} />
+              name={`${rawArea.id}`}
+              key={`${this.props.user}-${rawArea.id}-${index}`} />
     })
     return (
       <Grid columns={2} divided>

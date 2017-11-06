@@ -17,10 +17,10 @@ export default class Submission extends Component {
   }
 
   handleSubmit = (event) => {
-    Promise.all([this.mapScorePosts()])
-    .then(() => {
+    axios.all(this.mapScorePosts())
+    .then(axios.spread((...data) => {
       this.props.fetchSubs()
-    })
+    }))
   }
 
   mapScorePosts = () => {

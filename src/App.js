@@ -53,6 +53,7 @@ class App extends Component {
       if (localStorage.getItem('user_id')) {
         return (<Router>
           <div>
+            <h1 stlye='display:none'>{this.state.please}</h1>
             <Nav logoutHandler={this.logoutHandler}/>
             <Route exact path='/' component={Home}/>
             <Route exact path='/projects' component={Projects}/>

@@ -3,29 +3,25 @@ import { Accordion } from 'semantic-ui-react'
 import Submission from './Submission'
 import BASE_URL from '../requests'
 import axios from 'axios'
-import _ from 'lodash'
 
 export default class ProjectPage extends Component{
-  state = {
-    something: ''
-  }
+  state = {}
 
   componentDidMount() {
     this.fetchSubmissions()
   }
 
   fetchSubmissions = () => {
-    console.log('hi');
     let project_id = this.props.match.params.id
     axios.all([
       axios.get(`${BASE_URL}/api/v1/projects/${project_id}/ungraded_subs`),
       axios.get(`${BASE_URL}/api/v1/projects/${project_id}`)
     ])
       .then(axios.spread((subs, project) => {
+        console.log(subs.data);
         this.setState({
           submissions: subs.data,
-          project: project.data,
-          something: _.random(1.2, 123.4)
+          project: project.data
         })
       }))
       .catch((error) => {
@@ -59,7 +55,7 @@ export default class ProjectPage extends Component{
         <h3>{desc}</h3>
         {
           rawSubs && rawSubs.length ? (
-            <Accordion fluid styled defaultActiveIndex={-1} panels={submissions} id={this.state.something}/>
+            <Accordion fluid styled defaultActiveIndex={-1} panels={submissions} ugh={this.state.something}/>
           ) : (
             <h2>No Submissions Found</h2>
           )

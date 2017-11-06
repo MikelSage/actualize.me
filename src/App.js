@@ -8,6 +8,7 @@ import Home from './components/Home'
 import Nav from './components/Nav'
 import Projects from './components/Projects'
 import LoginForm from './components/LoginForm'
+import ProjectPage from './components/ProjectPage'
 import axios from 'axios'
 import BASE_URL from './requests'
 
@@ -58,7 +59,8 @@ class App extends Component {
           <div>
             <Nav logoutHandler={this.logoutHandler}/>
             <Route exact path='/' component={Home}/>
-            <Route path='/projects' component={Projects}/>
+            <Route exact path='/projects' component={Projects}/>
+            <Route path='/projects/:id/submissions' component={ProjectPage}/>
           </div>
         </Router>)
       } else {

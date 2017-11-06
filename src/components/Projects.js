@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Accordion, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Accordion } from 'semantic-ui-react'
 import axios from 'axios'
 import BASE_URL from '../requests'
 
@@ -30,6 +31,7 @@ export default class Projects extends Component {
             <div>
               <p>{project.description}</p>
               <a href={project.spec_url} target="_blank">Link to Spec</a>
+              <Link to={`/projects/${project.id}/submissions`}>Submissions</Link>
             </div>
           ),
           key: `content-${project.id}`

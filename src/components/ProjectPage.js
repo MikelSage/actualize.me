@@ -35,8 +35,10 @@ export default class ProjectPage extends Component{
   render() {
     const rawSubs = this.state.submissions
     const submissions = rawSubs && this.mapSubmissions(rawSubs)
-    return (
+    return rawSubs && rawSubs.length ? (
       <Accordion fluid styled defaultActiveIndex={-1} panels={submissions}/>
+    ) : (
+      <h2>No Submissions Found</h2>
     )
   }
 }

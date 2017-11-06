@@ -30,8 +30,10 @@ export default class Projects extends Component {
           content: (
             <div>
               <p>{project.description}</p>
-              <a href={project.spec_url} target="_blank">Link to Spec</a>
-              <Link to={`/projects/${project.id}/ungraded`}>Submissions</Link>
+              <a href={project.spec_url} target="_blank">Link to Spec</a> |
+              <Link to={`/projects/${project.id}/ungraded`} className='sub-link'>
+                Submissions
+              </Link>
             </div>
           ),
           key: `content-${project.id}`

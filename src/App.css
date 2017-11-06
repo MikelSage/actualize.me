@@ -9,3 +9,7 @@ form.ui.form {
 .active-route {
   font-weight: bold;
 }
+
+.sub-link {
+  margin-left: 4px;
+}

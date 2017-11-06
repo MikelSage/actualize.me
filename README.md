@@ -18,10 +18,10 @@ Clone down this repo and run:
 In project directory:
 
 ```bash
-heroku create --buildpack https://github.com/mars/create-react-app-buildpack.git
-git add .
-git commit -m "Deploy"
-git push heroku master
-heroku open
+$ heroku create --buildpack https://github.com/mars/create-react-app-buildpack.git
+$ git add .
+$ git commit -m "Deploy"
+$ git push heroku master
+$ heroku open
 ```
 Afterwards replace the cloudUrl in `.src/requests.js` with your heroku URL

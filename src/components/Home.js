@@ -7,7 +7,7 @@ export default class Home extends Component {
       <div>
         <Header as='h1' textAlign='center'>
           <Header.Content>
-            Welcome to Some Stuff
+            {`Welcome, ${localStorage.getItem('username')}`}
           </Header.Content>
         </Header>
       </div>

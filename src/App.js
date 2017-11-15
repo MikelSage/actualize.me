@@ -29,6 +29,7 @@ class App extends Component {
     .then((response) => {
       localStorage.setItem('user_id', response.data.id)
       localStorage.setItem('role', response.data.role)
+      localStorage.setItem('username', this.state.username)
       this.setState({
         username: this.state.username,
         password: this.state.password
@@ -44,6 +45,7 @@ class App extends Component {
   logoutHandler = () => {
     localStorage.removeItem('user_id')
     localStorage.removeItem('role')
+    localStorage.removeItem('username')
     this.setState({
       error: ''
     })

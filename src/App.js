@@ -9,6 +9,7 @@ import Nav from './components/Nav'
 import Projects from './components/Projects'
 import LoginForm from './components/LoginForm'
 import ProjectPage from './components/ProjectPage'
+import NewProjectForm from './components/NewProjectForm'
 import axios from 'axios'
 import BASE_URL from './requests'
 
@@ -55,11 +56,11 @@ class App extends Component {
       if (localStorage.getItem('user_id')) {
         return (<Router>
           <div>
-            <h1 stlye='display:none'>{this.state.please}</h1>
             <Nav logoutHandler={this.logoutHandler}/>
             <Route exact path='/' component={Home}/>
             <Route exact path='/projects' component={Projects}/>
             <Route path='/projects/:id/ungraded' component={ProjectPage}/>
+            <Route path='/projects/new' component={NewProjectForm}/>
           </div>
         </Router>)
       } else {

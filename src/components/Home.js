@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import {Header} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <Header as='h1' textAlign='center'>
-          <Header.Content>
-            {`Welcome, ${localStorage.getItem('username')}`}
-          </Header.Content>
-        </Header>
+        <h1 className='ui center aligned header'>
+          {`Welcome, ${localStorage.getItem('username')}`}
+        </h1>
+        <Link to='/projects/new'>Add New Project</Link>
       </div>
     )
   }

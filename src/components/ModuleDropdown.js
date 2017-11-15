@@ -19,7 +19,8 @@ export default class ModuleDropdown extends Component {
     const mods = this.state.modules && this.state.modules.map((mod) => {
       return {
         text: `${mod.inning} ${mod.program}`,
-        value: `${mod.inning} ${mod.program}`
+        value: `${mod.inning} ${mod.program}`,
+        key: `mod-${mod.id}`
       }
     })
 

@@ -9,6 +9,7 @@ import Nav from './components/Nav'
 import Projects from './components/Projects'
 import LoginForm from './components/LoginForm'
 import ProjectPage from './components/ProjectPage'
+import NewProjectForm from './components/NewProjectForm'
 import axios from 'axios'
 import BASE_URL from './requests'
 
@@ -29,6 +30,7 @@ class App extends Component {
     .then((response) => {
       localStorage.setItem('user_id', response.data.id)
       localStorage.setItem('role', response.data.role)
+      localStorage.setItem('username', this.state.username)
       this.setState({
         username: this.state.username,
         password: this.state.password
@@ -44,6 +46,7 @@ class App extends Component {
   logoutHandler = () => {
     localStorage.removeItem('user_id')
     localStorage.removeItem('role')
+    localStorage.removeItem('username')
     this.setState({
       error: ''
     })
@@ -53,11 +56,11 @@ class App extends Component {
       if (localStorage.getItem('user_id')) {
         return (<Router>
           <div>
-            <h1 stlye='display:none'>{this.state.please}</h1>
             <Nav logoutHandler={this.logoutHandler}/>
             <Route exact path='/' component={Home}/>
             <Route exact path='/projects' component={Projects}/>
             <Route path='/projects/:id/ungraded' component={ProjectPage}/>
+            <Route path='/projects/new' component={NewProjectForm}/>
           </div>
         </Router>)
       } else {

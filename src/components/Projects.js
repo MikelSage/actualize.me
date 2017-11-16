@@ -9,7 +9,8 @@ export default class Projects extends Component {
   state = {}
 
   componentDidMount() {
-    axios.get(BASE_URL + '/api/v1/current_projects')
+    axios.get(`${BASE_URL}/api/v1/current_projects`,
+     {params: {user_id: localStorage.getItem('user_id')}})
       .then((response) => {
         this.setState({projects: response.data})
       })

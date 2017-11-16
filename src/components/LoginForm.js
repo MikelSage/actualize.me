@@ -22,6 +22,7 @@ export default class LoginForm extends Component {
           <Form.Field>
             <label>Password</label>
             <input id='password'
+            type='password'
             placeholder='Password'
             onChange={this.props.handleChange}
              />

@@ -19,13 +19,19 @@ export default class ModuleDropdown extends Component {
     const mods = this.state.modules && this.state.modules.map((mod) => {
       return {
         text: `${mod.inning} ${mod.program}`,
-        value: `${mod.inning} ${mod.program}`,
+        value: mod.id,
         key: `mod-${mod.id}`
       }
     })
 
     return (
-      <Dropdown placeholder='Select Module' fluid selection options={mods || []}/>
+      <Dropdown
+        id='module-dropdown'
+        placeholder='Select Module'
+        fluid selection
+        options={mods || []}
+        onChange={this.props.onChange}
+      />
     )
   }
 }

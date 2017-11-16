@@ -52,8 +52,16 @@ class App extends Component {
     })
   }
 
+  authorizedInstructor() {
+    return localStorage.getItem('user_id') && localStorage.getItem('role') === 'instructor'
+  }
+
+  authorizedStudent() {
+    return localStorage.getItem('user_id') && localStorage.getItem('role') === 'student'
+  }
+
   render() {
-      if (localStorage.getItem('user_id')) {
+      if (this.authorizedInstructor()) {
         return (<Router>
           <div>
             <Nav logoutHandler={this.logoutHandler}/>
@@ -61,6 +69,14 @@ class App extends Component {
             <Route exact path='/projects' component={Projects}/>
             <Route path='/projects/:id/ungraded' component={ProjectPage}/>
             <Route path='/projects/new' component={NewProjectForm}/>
+          </div>
+        </Router>)
+      } else if (this.authorizedStudent()) {
+        return (<Router>
+          <div>
+            <Nav logoutHandler={this.logoutHandler}/>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/projects' component={Projects}/>
           </div>
         </Router>)
       } else {

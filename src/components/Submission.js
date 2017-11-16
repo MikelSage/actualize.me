@@ -35,7 +35,6 @@ export default class Submission extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     let project_id = this.props.submission.project_id
     axios.get(`${BASE_URL}/api/v1/projects/${project_id}/areas`)
     .then((response) => {

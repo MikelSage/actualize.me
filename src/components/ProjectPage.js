@@ -18,7 +18,6 @@ export default class ProjectPage extends Component{
       axios.get(`${BASE_URL}/api/v1/projects/${project_id}`)
     ])
       .then(axios.spread((subs, project) => {
-        console.log(subs.data);
         this.setState({
           submissions: subs.data,
           project: project.data

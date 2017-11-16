@@ -53,11 +53,13 @@ class App extends Component {
   }
 
   authorizedInstructor() {
-    return localStorage.getItem('user_id') && localStorage.getItem('role') === 'instructor'
+    return localStorage.getItem('user_id')
+      && localStorage.getItem('role') === 'instructor'
   }
 
   authorizedStudent() {
-    return localStorage.getItem('user_id') && localStorage.getItem('role') === 'student'
+    return localStorage.getItem('user_id')
+      && localStorage.getItem('role') === 'student'
   }
 
   render() {

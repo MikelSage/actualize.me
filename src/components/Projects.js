@@ -25,7 +25,8 @@ export default class Projects extends Component {
       return {
         title: {
           content: project.name,
-          key: `title-${project.id}`
+          key: `title-${project.id}`,
+          tabIndex: '0'
         },
         content: {
           content: (

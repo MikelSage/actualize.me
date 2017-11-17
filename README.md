@@ -3,6 +3,8 @@
 ## Introduction
 
 Actualize.me is a platform for students and instructors to aggregate and gain insight from assignment data.
+As an instructor, you can add projects to a module, see all the projects for the current module you are teaching, and grade submissions from students.
+As a student, you can see your average scores, see all the projects for the current module, and submit a project to be graded.
 Find the express api [here](https://github.com/MikelSage/actualize.me-api)
 
 ## Installation
